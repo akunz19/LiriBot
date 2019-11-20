@@ -72,9 +72,19 @@ if (command === "spotify-this-song") {
     var dataArray = dataStr.split(",");
     randCommand = dataArray[0];
     query = dataArray[1];
-    if (randCommand) {
+    queryMovie = new Movie(query);
+    if (randCommand === "spotify-this-song") {
       findTrack();
-    }
+    } else if(randCommand === "movie-this"){
+        queryMovie.findMovie();
+    } else if(randCommand === "concert-this"){
+        queryConcert = new Concert(query);
+        queryConcert.findConcert();
+        console.log(query);
+        console.log(queryConcert);
+    } else{
+        console.log("invalid command");
+    };
   } catch (err) {
     console.error(err);
   }
